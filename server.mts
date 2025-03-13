@@ -84,11 +84,14 @@ app.use(express.json({ limit: "10mb" }));
 
 // --- Product Endpoints ---
 app.get("/api/products", async (req: Request, res: Response) => {
+  console.log("Received request to /api/products"); // Log when the request is received
   try {
     const products = await Product.find();
+    console.log("Product.find() result:", products); // Log the result of the database query
     res.json(products);
   } catch (error: any) {
-    res.status(500).json({ message: error.message });
+    console.error("Error in /api/products:", error); // Log the full error object
+    res.status(500).json({ message: error.message, stack: error.stack }); // Send the stack trace!
   }
 });
 
