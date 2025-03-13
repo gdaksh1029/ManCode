@@ -1,3 +1,4 @@
+// app/page.tsx
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -5,8 +6,7 @@ import { categories } from "@/lib/data";
 import type { Product } from "@/types";
 
 async function fetchProducts() {
-  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000';
-  const res = await fetch(`${baseUrl}/api/products`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/products`, {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Failed to fetch products");
@@ -14,7 +14,13 @@ async function fetchProducts() {
 }
 
 export default async function Home() {
-  const products = await fetchProducts();
+  let products: Product[] = [];
+  try {
+    products = await fetchProducts();
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return <div>Error loading products. Please try again later.</div>;
+  }
 
   return (
     <div className="min-h-screen">

@@ -1,8 +1,8 @@
-// File: next.config.js
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    ignoreDuringBuilds: true, // You can remove this later
+    ignoreDuringBuilds: true,
   },
   images: {
     remotePatterns: [
@@ -31,14 +31,6 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://mancode-o3ge.onrender.com/api/:path*',
-      },
-    ];
   },
 };
 
