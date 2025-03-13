@@ -10,7 +10,7 @@ interface ProductPageProps {
 }
 
 async function fetchProduct(id: string): Promise<Product | null> { // Return type includes null
-  const res = await fetch(`http://localhost:3001/api/products/${id}`, { cache: 'no-store' });
+  const res = await fetch(`/api/products/${id}`, { cache: 'no-store' });
 
   if (!res.ok) {
     // If the response is NOT ok (e.g., 404),  we DO NOT throw a general error here.

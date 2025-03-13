@@ -5,7 +5,7 @@ import { categories } from "@/lib/data";
 import type { Product } from "@/types";
 
 async function fetchProducts() {
-  const res = await fetch("http://localhost:3001/api/products", {
+  const res = await fetch("/api/products", {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Failed to fetch products");

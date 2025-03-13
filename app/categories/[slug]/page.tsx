@@ -16,7 +16,7 @@ interface CategoryPageProps {
 
 // Fetch products from the API
 async function fetchProductsByCategory(category: string): Promise<Product[]> {
-    const res = await fetch(`http://localhost:3001/api/products`, {
+    const res = await fetch(`/api/products`, {
         cache: 'no-store' // Important for dynamic updates
     });
     if (!res.ok) {

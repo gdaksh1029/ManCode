@@ -6,7 +6,7 @@ import { Product } from '@/types';
 
 
 async function fetchProductsBySearch(query: string): Promise<Product[]> {
-  const res = await fetch(`http://localhost:3001/api/products/search?q=${query}`);
+  const res = await fetch(`/api/products/search?q=${query}`);
   if (!res.ok) {
     throw new Error('Failed to fetch products');
   }
