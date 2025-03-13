@@ -32,8 +32,8 @@ export default function AdminProductsPage() {
     const fetchProducts = async () => {
         setIsLoading(true);
         try {
-          const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-            const res = await fetch(`https://${baseUrl}/api/products`);
+          const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000';
+            const res = await fetch(`${baseUrl}/api/products`);
             if (!res.ok) {
                 throw new Error(`Failed to fetch products: ${res.status} ${res.statusText}`);
             }
@@ -57,8 +57,8 @@ export default function AdminProductsPage() {
 
     const handleDeleteProduct = async (id: string) => {
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-      const res = await fetch(`https://${baseUrl}/api/products/${id}`, {
+      const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000';
+      const res = await fetch(`${baseUrl}/api/products/${id}`, {
         method: 'DELETE',
       });
 
