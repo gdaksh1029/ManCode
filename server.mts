@@ -38,9 +38,10 @@ function authenticateToken(
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Update CORS configuration:
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://man-code-gules.vercel.app"], // Allow both localhost and your Vercel URL
     credentials: true,
   })
 );
@@ -404,8 +405,8 @@ app.post("/api/checkout", async (req: Request, res: Response) => {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: "http://localhost:3000/checkout/success",
-      cancel_url: "http://localhost:3000/cart",
+      success_url: "https://man-code-gules.vercel.app/checkout/success",  // Use Vercel URL
+      cancel_url: "https://man-code-gules.vercel.app/cart", // Use Vercel URL
       metadata: { userId: userId },
     });
     res.json({ url: session.url });

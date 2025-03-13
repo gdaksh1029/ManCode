@@ -5,7 +5,8 @@ import { categories } from "@/lib/data";
 import type { Product } from "@/types";
 
 async function fetchProducts() {
-  const res = await fetch("/api/products", {
+  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
+  const res = await fetch('${baseUrl}/api/products', {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Failed to fetch products");

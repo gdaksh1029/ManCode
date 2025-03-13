@@ -6,7 +6,8 @@ import { Product } from '@/types';
 
 
 async function fetchProductsBySearch(query: string): Promise<Product[]> {
-  const res = await fetch(`/api/products/search?q=${query}`);
+  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000'; 
+  const res = await fetch(`${baseUrl}/api/products/search?q=${query}`);
   if (!res.ok) {
     throw new Error('Failed to fetch products');
   }
