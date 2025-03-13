@@ -51,7 +51,8 @@ export default function AddProductPage() {
 
   const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
     try {
-      const response = await fetch("/api/products", {
+      const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
+      const response = await fetch("${baseUrl}/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
