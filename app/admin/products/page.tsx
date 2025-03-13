@@ -32,7 +32,7 @@ export default function AdminProductsPage() {
         setIsLoading(true);
         try {
           const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-            const res = await fetch(`${baseUrl}/api/products`);
+            const res = await fetch(`https://${baseUrl}/api/products`);
             if (!res.ok) {
                 throw new Error(`Failed to fetch products: ${res.status} ${res.statusText}`);
             }
@@ -57,7 +57,7 @@ export default function AdminProductsPage() {
     const handleDeleteProduct = async (id: string) => {
     try {
       const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-      const res = await fetch(`${baseUrl}/api/products/${id}`, {
+      const res = await fetch(`https://${baseUrl}/api/products/${id}`, {
         method: 'DELETE',
       });
 

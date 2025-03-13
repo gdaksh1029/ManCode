@@ -53,7 +53,7 @@ export default function EditProductPage({ params }: EditProductPageProps) {
     const fetchProduct = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-        const res = await fetch(`${baseUrl}/api/products/${params.id}`);
+        const res = await fetch(`https://${baseUrl}/api/products/${params.id}`);
         if (!res.ok) {
           throw new Error(
             `Failed to fetch product: ${res.status} ${res.statusText}`
@@ -89,7 +89,7 @@ export default function EditProductPage({ params }: EditProductPageProps) {
   const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
     try {
       const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-      const res = await fetch(`${baseUrl}/api/products/${params.id}`, {
+      const res = await fetch(`https://${baseUrl}/api/products/${params.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

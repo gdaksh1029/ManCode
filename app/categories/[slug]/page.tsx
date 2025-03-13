@@ -17,7 +17,7 @@ interface CategoryPageProps {
 // Fetch products from the API
 async function fetchProductsByCategory(category: string): Promise<Product[]> {
   const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/products`, {
+    const res = await fetch(`https://${baseUrl}/api/products`, {
         cache: 'no-store' // Important for dynamic updates
     });
     if (!res.ok) {

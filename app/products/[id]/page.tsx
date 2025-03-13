@@ -11,7 +11,7 @@ interface ProductPageProps {
 
 async function fetchProduct(id: string): Promise<Product | null> { // Return type includes null
   const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'http://localhost:3000';
-  const res = await fetch(`${baseUrl}/api/products/${id}`, { cache: 'no-store' });
+  const res = await fetch(`https://${baseUrl}/api/products/${id}`, { cache: 'no-store' });
 
   if (!res.ok) {
     // If the response is NOT ok (e.g., 404),  we DO NOT throw a general error here.
