@@ -36,7 +36,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:3001/api/:path*',
+        destination: 'https://mancode-o3ge.onrender.com/api/:path*',
       },
     ];
   },
